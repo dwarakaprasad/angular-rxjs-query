@@ -70,7 +70,7 @@ export class AppComponent  {
         take(1)
       )
       .subscribe(currentData => {
-        const upatedElement = currentData.find(input => input.getFormId === updatedApplication.getFormId);
+        const upatedElement = currentData.find(input => input.getFormId() === updatedApplication.getFormId());
         let newData = [...currentData.splice(currentData.indexOf(upatedElement, 0), 1), updatedApplication];
         this.appSubject.next(newData);
       });
@@ -82,7 +82,7 @@ export class AppComponent  {
         take(1)
       )
       .subscribe(currentData => {
-        const upatedElement = currentData.find(input => input.getFormId === formId);
+        const upatedElement = currentData.find(input => input.getFormId() === formId);
         this.appSubject.next(currentData.splice(currentData.indexOf(upatedElement, 0), 1));
       });
   }
